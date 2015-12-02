@@ -19,26 +19,26 @@
     <Filter Include="Fichiers d%27en-tête\Protocol">
       <UniqueIdentifier>{c7395fda-72c0-4b4c-a826-e322aae36202}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Abstraction">
-      <UniqueIdentifier>{b8eebabf-f993-4342-a691-e85e50f0c18a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\Controller">
       <UniqueIdentifier>{ac5bca67-2fe3-4c0e-bc13-60746879b101}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers d%27en-tête\Controller">
       <UniqueIdentifier>{0e561d80-4e93-41f6-a944-032ed7b5e9df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\UExchange">
-      <UniqueIdentifier>{59241fc1-923f-4db3-b018-702462f014b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\UExchange">
-      <UniqueIdentifier>{d7229655-8bd6-4b30-a931-56083de28482}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\Socket">
       <UniqueIdentifier>{4360166f-872b-4006-9ad8-fe529a2a2504}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers sources\Socket">
       <UniqueIdentifier>{ec97be05-208d-4d17-8018-ef5568f6c57a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Interfaces">
+      <UniqueIdentifier>{b8eebabf-f993-4342-a691-e85e50f0c18a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Exchange">
+      <UniqueIdentifier>{d7229655-8bd6-4b30-a931-56083de28482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Exchange">
+      <UniqueIdentifier>{59241fc1-923f-4db3-b018-702462f014b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -48,14 +48,14 @@
     <ClCompile Include="Controller.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="USocket.cpp">
+    <ClCompile Include="Packet.cpp">
+      <Filter>Fichiers sources\Exchange</Filter>
+    </ClCompile>
+    <ClCompile Include="WSocket.cpp">
       <Filter>Fichiers sources\Socket</Filter>
     </ClCompile>
-    <ClCompile Include="Packet.cpp">
-      <Filter>Fichiers sources\UExchange</Filter>
-    </ClCompile>
-    <ClCompile Include="UExchange.cpp">
-      <Filter>Fichiers sources\UExchange</Filter>
+    <ClCompile Include="WExchange.cpp">
+      <Filter>Fichiers sources\Exchange</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,19 +63,19 @@
       <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
     <ClInclude Include="IExchange.hh">
-      <Filter>Fichiers d%27en-tête\Abstraction</Filter>
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="ISocket.hh">
-      <Filter>Fichiers d%27en-tête\Abstraction</Filter>
-    </ClInclude>
-    <ClInclude Include="USocket.hh">
-      <Filter>Fichiers d%27en-tête\Socket</Filter>
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="Packet.hh">
-      <Filter>Fichiers d%27en-tête\UExchange</Filter>
+      <Filter>Fichiers d%27en-tête\Exchange</Filter>
     </ClInclude>
-    <ClInclude Include="UExchange.hh">
-      <Filter>Fichiers d%27en-tête\UExchange</Filter>
+    <ClInclude Include="WSocket.hh">
+      <Filter>Fichiers d%27en-tête\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="WExchange.hh">
+      <Filter>Fichiers d%27en-tête\Exchange</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

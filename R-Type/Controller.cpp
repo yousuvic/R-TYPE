@@ -7,15 +7,23 @@ void		Controller::update()
 
 void		Controller::sendActionPackets()
 {
-	//srv->InitSrvUDP();
-	//srv->ExchangeSrvUDP();
+	while (true)
+	{
+		newExchange->recv(newSocket->getSocket());
+	}
 }
 
 Controller::Controller()
 {
-	//srv = new UDPExchangeWin;
+	newExchange = new WExchange();
+	newSocket = new WSocket();
+
+	newSocket->init();
+	newSocket->setNonBlockingMode();
 }
 
 Controller::~Controller()
 {
+	delete	newExchange;
+	delete	newSocket;
 }
