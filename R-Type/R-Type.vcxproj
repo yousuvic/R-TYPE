@@ -68,12 +68,17 @@
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="UDPExchangeWin.cpp" />
+    <ClCompile Include="Packet.cpp" />
+    <ClCompile Include="UExchange.cpp" />
+    <ClCompile Include="USocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.hh" />
-    <ClInclude Include="IUDP.hh" />
-    <ClInclude Include="UdpExchangeWin.hh" />
+    <ClInclude Include="IExchange.hh" />
+    <ClInclude Include="ISocket.hh" />
+    <ClInclude Include="Packet.hh" />
+    <ClInclude Include="UExchange.hh" />
+    <ClInclude Include="USocket.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

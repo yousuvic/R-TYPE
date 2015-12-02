@@ -1,8 +1,6 @@
 #ifndef CONTROLLER_HH
 #define	CONTROLLER_HH
 
-#include "UdpExchangeWin.hh"
-
 class Controller
 {
 public:
@@ -12,7 +10,7 @@ public:
 	void	update();
 
 private:
-	UDPExchangeWin		*srv;
+	
 };
 
 #endif // !CONTROLLER_HH

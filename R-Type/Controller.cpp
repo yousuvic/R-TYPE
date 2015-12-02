@@ -7,13 +7,13 @@ void		Controller::update()
 
 void		Controller::sendActionPackets()
 {
-	srv->InitSrvUDP();
-	srv->ExchangeSrvUDP();
+	//srv->InitSrvUDP();
+	//srv->ExchangeSrvUDP();
 }
 
 Controller::Controller()
 {
-	srv = new UDPExchangeWin;
+	//srv = new UDPExchangeWin;
 }
 
 Controller::~Controller()
