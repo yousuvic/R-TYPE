@@ -16,6 +16,7 @@ public:
 
 private:
 	struct sockaddr_in	_si_other;
+	Packet::keyPressed	_recvData;
 };
 
 #endif // !WEXCHANGE_HH

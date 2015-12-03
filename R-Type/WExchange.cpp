@@ -9,7 +9,7 @@ Packet		WExchange::recv(int socket)
 
 	_slen = sizeof(_si_other);
 	memset(data, 0, sizeof(data));
-	bytes = recvfrom(socket, (char*)data, sizeof(data), 0, (sockaddr*)&_si_other, &_slen);
+	bytes = recvfrom(socket, reinterpret_cast<char*>(&_recvData), sizeof(Packet::keyPressed), 0, (sockaddr*)&_si_other, &_slen);
 	std::cout << "data recu : " << data << std::endl;
 	return (_packet);
 }
