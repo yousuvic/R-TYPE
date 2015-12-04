@@ -70,15 +70,18 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="WExchange.cpp" />
+    <ClCompile Include="WITCPSocket.cpp" />
     <ClCompile Include="WSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.hh" />
     <ClInclude Include="IExchange.hh" />
     <ClInclude Include="ISocket.hh" />
+    <ClInclude Include="ITCPSocket.hh" />
     <ClInclude Include="Packet.hh" />
     <ClInclude Include="WExchange.hh" />
     <ClInclude Include="WSocket.hh" />
+    <ClInclude Include="WTCPSocket.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

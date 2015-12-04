@@ -57,6 +57,9 @@
     <ClCompile Include="WExchange.cpp">
       <Filter>Fichiers sources\Exchange</Filter>
     </ClCompile>
+    <ClCompile Include="WITCPSocket.cpp">
+      <Filter>Fichiers sources\Socket</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.hh">
@@ -76,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="WExchange.hh">
       <Filter>Fichiers d%27en-tête\Exchange</Filter>
+    </ClInclude>
+    <ClInclude Include="ITCPSocket.hh">
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="WTCPSocket.hh">
+      <Filter>Fichiers d%27en-tête\Socket</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
