@@ -16,10 +16,12 @@ void		Controller::sendActionPackets()
 Controller::Controller()
 {
 	newExchange = new WExchange();
-	newSocket = new WSocket();
+	/*UDP*/
+	//newSocket = new WSocket(SOCK_DGRAM, IPPROTO_UDP);
 
-	newSocket->init();
-	newSocket->setNonBlockingMode();
+	/*TCP*/
+	newSocket = new WSocket(SOCK_STREAM, IPPROTO_TCP);
+	
 }
 
 Controller::~Controller()
