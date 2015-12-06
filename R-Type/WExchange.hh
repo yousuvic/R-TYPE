@@ -13,6 +13,7 @@ public:
 
 	void	recv(int socket);
 	int		send(int socket, const Packet& packet);
+	void	disp();
 
 private:
 	struct sockaddr_in	_si_other;
