@@ -46,9 +46,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Pthread-include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)\Ptherad-lib\pthreadVC.lib;$(SolutionDir)\Ptherad-lib\pthreadVCE.lib;$(SolutionDir)\Ptherad-lib\pthreadVSE.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -71,12 +73,15 @@
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="WExchange.cpp" />
     <ClCompile Include="WSocket.cpp" />
+    <ClCompile Include="WThread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.hh" />
     <ClInclude Include="IExchange.hh" />
     <ClInclude Include="ISocket.hh" />
+    <ClInclude Include="IThread.hh" />
     <ClInclude Include="Packet.hh" />
+    <ClInclude Include="WThread.hh" />
     <ClInclude Include="WExchange.hh" />
     <ClInclude Include="WSocket.hh" />
   </ItemGroup>

@@ -3,6 +3,7 @@
 
 #include "WExchange.hh"
 #include "WSocket.hh"
+#include "WThread.hh"
 
 class Controller
 {
@@ -13,8 +14,9 @@ public:
 	void	update();
 
 private:
-	WSocket		*newSocket;
-	WExchange	*newExchange;
+	WSocket		*tcpSocket;
+	WExchange	*tcpExchange;
+	WThread		*threadTCP;
 };
 
 #endif // !CONTROLLER_HH

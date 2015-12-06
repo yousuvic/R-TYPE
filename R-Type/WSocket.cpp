@@ -24,7 +24,7 @@ void	WSocket::bind_()
 		printf("Bind failed with error code : %d", WSAGetLastError());
 		exit(EXIT_FAILURE);
 	}
-	puts("UDP SERVER IS RUNNING !");
+	//puts("UDP SERVER IS RUNNING !");
 }
 
 void	WSocket::listen_()

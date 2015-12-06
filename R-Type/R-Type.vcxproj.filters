@@ -40,6 +40,12 @@
     <Filter Include="Fichiers sources\Exchange">
       <UniqueIdentifier>{59241fc1-923f-4db3-b018-702462f014b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Thread">
+      <UniqueIdentifier>{bfed3aaf-733c-4bbc-8281-1b647304e3da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Thread">
+      <UniqueIdentifier>{2607c68d-28be-47d8-b63c-a740158f62b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -56,6 +62,9 @@
     </ClCompile>
     <ClCompile Include="WExchange.cpp">
       <Filter>Fichiers sources\Exchange</Filter>
+    </ClCompile>
+    <ClCompile Include="WThread.cpp">
+      <Filter>Fichiers sources\Thread</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="WExchange.hh">
       <Filter>Fichiers d%27en-tête\Exchange</Filter>
+    </ClInclude>
+    <ClInclude Include="WThread.hh">
+      <Filter>Fichiers d%27en-tête\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="IThread.hh">
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

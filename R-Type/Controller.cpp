@@ -7,25 +7,42 @@ void		Controller::update()
 
 void		Controller::sendActionPackets()
 {
-	while (true)
+	/*while (true)
 	{
 		newExchange->recv(newSocket->getSocket());
+	}*/
+}
+
+void	*exTCP(void *arg)
+{
+	std::cout << "TCP SERVER IS RUNNING !" << std::endl;
+
+	WExchange	*talk = reinterpret_cast<WExchange *> (arg);
+	WSocket		*tcpSrv = new	WSocket(SOCK_STREAM, IPPROTO_TCP);	/*		TCP		*/
+
+	while (true)
+	{
+		//talk.recv(tcpSrv->getSocket());
 	}
 }
 
 Controller::Controller()
 {
-	newExchange = new WExchange();
+	this->tcpExchange = new WExchange();
+	this->threadTCP = new WThread();
+
+	threadTCP->create(&exTCP, static_cast<void *>(tcpExchange));
+	while (true)
+	{
+
+	}
 	/*UDP*/
 	//newSocket = new WSocket(SOCK_DGRAM, IPPROTO_UDP);
-
-	/*TCP*/
-	newSocket = new WSocket(SOCK_STREAM, IPPROTO_TCP);
-	
+	//std::cout << "UDP SERVER IS RUNNING !" << std::endl;	
 }
 
 Controller::~Controller()
 {
-	delete	newExchange;
-	delete	newSocket;
+	delete	tcpExchange;
+	delete	tcpSocket;
 }
