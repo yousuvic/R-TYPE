@@ -9,17 +9,23 @@ void	*exTCP(void *arg)
 {
 	std::cout << "TCP SERVER IS RUNNING !" << std::endl;
 
-	//Controller::clientList	*clientInfo = reinterpret_cast<Controller::clientList *> (arg);
-	WExchange				*talk = reinterpret_cast<WExchange *> (arg);
+	WExchange				talk;
 	WSocket					*tcpSrv = new	WSocket(SOCK_STREAM, IPPROTO_TCP);	/*		TCP		*/
-
-
-	/*clientInfo->id = 1;
-	clientInfo->clientSocket = INVALID_SOCKET;
-	clientInfo->login = "";*/
-
+	Controller*				_this = reinterpret_cast<Controller*> (arg);
+	Controller::clientList	clientInfo;
+	
+	
+	
 	while (true)
 	{
+		tcpSrv->accept_();
+		clientInfo.id = (_this->getCList().size() + 1);
+		clientInfo.clientSocket = tcpSrv->getSocket();
+		clientInfo.login = "";
+
+		_this->setCList(clientInfo);
+
+		_this->setClientInfo(&clientInfo);
 		//talk.recv(tcpSrv->getSocket());
 	}
 }
@@ -31,9 +37,9 @@ void		Controller::sendActionPackets()
 		newExchange->recv(newSocket->getSocket());
 	}*/
 
-	
-	this->threadTCP->create(&exTCP, static_cast<void *>(tcpExchange));	/*		THREAD		*/
-	while (true);
+	this->threadTCP->create(&exTCP, static_cast<void *>(this));	/*		THREAD		*/
+	while (true)
+		std::cout << this->cList.size() << std::endl;
 }
 
 void	Controller::setClientInfo(Controller::clientList *info)
@@ -41,18 +47,30 @@ void	Controller::setClientInfo(Controller::clientList *info)
 	this->clientInfo = info;
 }
 
+Controller::clientList	*Controller::getClientInfo() const
+{
+	return this->clientInfo;
+}
+
+void		Controller::setCList(Controller::clientList client)
+{
+	this->cList.push_back(client);
+}
+
+std::vector<Controller::clientList> Controller::getCList() const
+{
+	return this->cList;
+}
+
 Controller::Controller()
 {	
-	/*clientInfo = new clientList;
+	this->threadTCP = new WThread();
+	this->clientInfo = new clientList;
 
 	clientInfo->id = 0;
 	clientInfo->clientSocket = INVALID_SOCKET;
-	clientInfo->login = "";*/
+	clientInfo->login = "";
 	
-
-	this->tcpExchange = new WExchange();
-	this->threadTCP = new WThread();
-
 	/*UDP*/
 	//newSocket = new WSocket(SOCK_DGRAM, IPPROTO_UDP);
 	//std::cout << "UDP SERVER IS RUNNING !" << std::endl;	
@@ -60,6 +78,6 @@ Controller::Controller()
 
 Controller::~Controller()
 {
-	delete	tcpExchange;
+	delete	threadTCP;
 	delete	tcpSocket;
 }

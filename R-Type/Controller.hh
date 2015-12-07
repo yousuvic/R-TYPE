@@ -22,14 +22,18 @@ public:
 	void	sendActionPackets();
 	void	update();
 	void	setClientInfo(clientList *);
+	clientList	*getClientInfo() const;
+
+	void						setCList(clientList);
+	std::vector<clientList>		getCList() const;
 
 private:
 	WSocket		*tcpSocket;
-	WExchange	*tcpExchange;
 	WThread		*threadTCP;
 
 	clientList				*clientInfo;
 	std::vector<clientList>	cList;
+
 };
 
 #endif // !CONTROLLER_HH

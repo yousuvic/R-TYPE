@@ -75,10 +75,7 @@ WSocket::WSocket(int type, int protocol)
 	this->bind_();
 
 	if (type == SOCK_STREAM)
-	{
 		this->listen_();
-		this->accept_();
-	}
 }
 
 WSocket::~WSocket()
