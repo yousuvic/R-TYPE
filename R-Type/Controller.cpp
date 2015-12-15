@@ -22,10 +22,10 @@ void	*exTCP(void *arg)
 		clientInfo.id = (_this->getCList().size() + 1);
 		clientInfo.clientSocket = tcpSrv->getSocket();
 		clientInfo.login = "";
-
+		_this->setClientInfo(&clientInfo);
 		_this->setCList(clientInfo);
 
-		_this->setClientInfo(&clientInfo);
+		
 		//talk.recv(tcpSrv->getSocket());
 	}
 }
