@@ -1,6 +1,6 @@
 #include "WExchange.hh"
 
-void		WExchange::recv(int socket)
+void		WExchange::recvUDP(int socket)
 {
 	int		bytes;
 	int		_slen;
@@ -10,7 +10,7 @@ void		WExchange::recv(int socket)
 	//std::cout << "data recu : " << data << std::endl;
 }
 
-int		WExchange::send(int socket, const Packet& packet)
+int		WExchange::sendUDP(int socket, const Packet& packet)
 {
 	int		sent_bytes;
 
@@ -18,8 +18,30 @@ int		WExchange::send(int socket, const Packet& packet)
 	return (sent_bytes);
 }
 
+void	WExchange::sendTCP(int socket)
+{
+	send(socket, (char *)_data_send, 100, 0);
+}
+
+void	WExchange::recvTCP(int socket)
+{
+	memset(_data_recv, 0, 100);
+	recv(socket, _data_recv, 100, 0);
+}
+
+char	*WExchange::getDataRecv() const
+{
+	return	(char *)this->_data_recv;
+}
+
+char	*WExchange::getDataSend() const
+{
+	return	(char *)this->_data_send;
+}
+
 WExchange::WExchange()
 {
+
 }
 
 WExchange::~WExchange()

@@ -12,7 +12,7 @@
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 
 
-#define PORT 4242
+#define PORT 4243
 
 class WSocket	:	public	ISocket
 {

@@ -19,8 +19,8 @@ class		IExchange
 public:
   virtual	~IExchange() = default;
 
-  virtual void	recv(int socket) = 0;
-  virtual int		send(int socket, const Packet& packet) = 0;
+  virtual void	recvUDP(int socket) = 0;
+  virtual int	sendUDP(int socket, const Packet& packet) = 0;
 };
 
 #endif		/* _IEXCHANGE_HH_ */

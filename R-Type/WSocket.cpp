@@ -40,7 +40,7 @@ void	WSocket::listen_()
 
 void	WSocket::accept_()
 {
-	if ((_tcpClientSocket = accept(_socket, NULL, NULL)) == INVALID_SOCKET) 
+	if ((_tcpClientSocket = accept(_socket, NULL, NULL)) == INVALID_SOCKET)
 	{
 		printf("accept failed with error: %d\n", WSAGetLastError());
 		closesocket(_socket);
@@ -66,7 +66,7 @@ void		WSocket::closeSocket()
 
 int			WSocket::getSocket() const
 {
-	return (_socket);
+	return (_tcpClientSocket);
 }
 
 WSocket::WSocket(int type, int protocol)

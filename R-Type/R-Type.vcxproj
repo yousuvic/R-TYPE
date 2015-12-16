@@ -71,6 +71,7 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Packet.cpp" />
+    <ClCompile Include="Protocol.cpp" />
     <ClCompile Include="WExchange.cpp" />
     <ClCompile Include="WSocket.cpp" />
     <ClCompile Include="WThread.cpp" />
@@ -81,9 +82,13 @@
     <ClInclude Include="ISocket.hh" />
     <ClInclude Include="IThread.hh" />
     <ClInclude Include="Packet.hh" />
+    <ClInclude Include="Protocol.hh" />
     <ClInclude Include="WThread.hh" />
     <ClInclude Include="WExchange.hh" />
     <ClInclude Include="WSocket.hh" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

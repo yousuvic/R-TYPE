@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "WExchange.hh"
+#include "Protocol.hh"
 #include "WSocket.hh"
 #include "WThread.hh"
 
