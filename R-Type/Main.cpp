@@ -1,4 +1,4 @@
-/*#include "Controller.hh"
+#include "Controller.hh"
 
 int		main()
 {
@@ -6,9 +6,9 @@ int		main()
 
 	Server->update();
 	return (0);
-}*/
+}
 
-#undef UNICODE
+/*#undef UNICODE
 
 #define WIN32_LEAN_AND_MEAN
 
@@ -24,7 +24,7 @@ int		main()
 // #pragma comment (lib, "Mswsock.lib")
 
 #define DEFAULT_BUFLEN 512
-#define DEFAULT_PORT "27015"
+#define DEFAULT_PORT "4243"
 
 int __cdecl main(void)
 {
@@ -146,4 +146,4 @@ int __cdecl main(void)
 	WSACleanup();
 
 	return 0;
-}
+}*/

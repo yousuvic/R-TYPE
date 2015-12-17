@@ -3,16 +3,21 @@
 
 #include <stdio.h>
 #include <winsock2.h>
-
+#include <vector>
 #include <string>
 
 #include "ISocket.hh"
 
-
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 
-
 #define PORT 4243
+
+typedef	struct clientList
+{
+	int			id;
+	SOCKET		clientSocket;
+	std::string	login;
+};
 
 class WSocket	:	public	ISocket
 {
@@ -25,12 +30,23 @@ public:
 	void			listen_();
 	void			accept_();
 	void			closeSocket();
+	void			selectTCP();
 
 	/* ----------- GETTERS ----------- */
 
 	int				getSocket() const;
 	int				getPort() const;
 	std::string		getAddress() const;
+
+	
+
+	/*----------- CLIENT LIST ----------*/
+
+	void						setClientInfo(clientList info);
+	void						setVectorList(clientList client);
+
+	clientList					getClientInfo() const;
+	std::vector<clientList>		getCList() const;
 
 private:
 	SOCKET				_socket;
@@ -42,6 +58,15 @@ private:
 
 	int					recv_len;
 	char				data[512];
+
+	/*----------- CLIENT LIST ----------*/
+	clientList					clientInfo;
+	std::vector<clientList>		clientList;
+
+	/*------------- SELECT -------------*/
+	fd_set						rdfd;
+	fd_set						wrfd;
+	struct timeval				tv;
 };
 
 #endif // !WSOCKET_HH

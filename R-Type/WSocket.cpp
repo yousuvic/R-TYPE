@@ -49,6 +49,57 @@ void	WSocket::accept_()
 	}
 }
 
+void						WSocket::setClientInfo(struct clientList info)
+{
+	this->clientInfo = info;
+}
+
+void						WSocket::setVectorList(struct clientList client)
+{
+	this->clientList.push_back(client);
+}
+
+clientList					WSocket::getClientInfo() const
+{
+	return	this->clientInfo;
+}
+
+std::vector<clientList>		WSocket::getCList() const
+{
+	return	clientList;
+}
+
+void	WSocket::selectTCP()
+{
+	clientInfo.id = 0;
+	clientInfo.clientSocket = INVALID_SOCKET;
+	clientInfo.login = "";
+
+	FD_ZERO(&rdfd);
+	FD_ZERO(&wrfd);
+
+	FD_SET(_socket, &rdfd);
+	//FD_SET(, &wrfd); boucle client
+
+	if ((select(_socket + 1, &rdfd, &wrfd, NULL, &tv)) == -1)
+	{
+		printf("Select error\n");
+		exit(EXIT_FAILURE);
+	}
+	if (FD_ISSET(_socket, &rdfd))
+	{
+		accept_();
+		clientInfo.id = (getCList().size() + 1);
+		clientInfo.clientSocket = _tcpClientSocket;
+		clientInfo.login = "";
+
+		setClientInfo(clientInfo);
+		setVectorList(clientInfo);
+	}
+
+
+}
+
 /*void	WSocket::setNonBlockingMode()
 {
 	int		iResult;
@@ -75,7 +126,12 @@ WSocket::WSocket(int type, int protocol)
 	this->bind_();
 
 	if (type == SOCK_STREAM)
-		this->listen_();
+	{
+		this->listen_();		
+
+		tv.tv_sec = 10;
+		tv.tv_usec = 0;
+	}
 }
 
 WSocket::~WSocket()
