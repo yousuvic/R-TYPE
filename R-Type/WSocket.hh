@@ -2,6 +2,7 @@
 #define	WSOCKET_HH
 
 #include <stdio.h>
+#include <iostream>
 #include <winsock2.h>
 #include <vector>
 #include <string>

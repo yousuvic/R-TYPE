@@ -80,6 +80,11 @@ void	WSocket::selectTCP()
 
 	FD_SET(_socket, &rdfd);
 	//FD_SET(, &wrfd); boucle client
+	for (std::vector<struct clientList>::iterator it = clientList.begin(); it != clientList.end(); ++it)
+	{
+		FD_SET(it->clientSocket, &wrfd);
+		FD_SET(it->clientSocket, &rdfd);
+	}
 
 	if ((select(_socket + 1, &rdfd, &wrfd, NULL, &tv)) == -1)
 	{
@@ -89,15 +94,32 @@ void	WSocket::selectTCP()
 	if (FD_ISSET(_socket, &rdfd))
 	{
 		accept_();
+		std::cout << "ACCEPTED" << std::endl;
 		clientInfo.id = (getCList().size() + 1);
 		clientInfo.clientSocket = _tcpClientSocket;
 		clientInfo.login = "";
 
+		std::cout << getCList().size() << std::endl;
 		setClientInfo(clientInfo);
 		setVectorList(clientInfo);
 	}
-
-
+	for (std::vector<struct clientList>::iterator it = clientList.begin(); it != clientList.end(); ++it)
+	{
+		memset(data, 0, 4);
+		if (FD_ISSET(it->clientSocket, &rdfd))
+		{
+			recv_len = recv(it->clientSocket, data, 512, 0);
+			data[recv_len - 1] = '\0';
+			send(it->clientSocket, "ok", 2, 0);
+			std::cout << data << std::endl;
+			//std::cout << "read" << std::endl;
+		}
+		if (FD_ISSET(it->clientSocket, &wrfd))
+		{
+			//send(it->clientSocket, "ok", 2, 0);
+			//std::cout << "write" << std::endl;
+		}
+	}
 }
 
 /*void	WSocket::setNonBlockingMode()
