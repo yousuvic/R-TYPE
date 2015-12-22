@@ -8,17 +8,18 @@
 #include <string>
 
 #include "ISocket.hh"
+#include "Protocol.hh"
 
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 
-#define PORT 4243
+#define PORT 4242
 
-typedef	struct clientList
+typedef	struct	s_clientList
 {
 	int			id;
 	SOCKET		clientSocket;
 	std::string	login;
-};
+}				clientList;
 
 class WSocket	:	public	ISocket
 {
@@ -62,12 +63,15 @@ private:
 
 	/*----------- CLIENT LIST ----------*/
 	clientList					clientInfo;
-	std::vector<clientList>		clientList;
+	std::vector<clientList>		clientVector;
 
 	/*------------- SELECT -------------*/
 	fd_set						rdfd;
 	fd_set						wrfd;
 	struct timeval				tv;
+
+	/*------------- PROTOCOL -------------*/
+	Protocol					tcpPRTL;
 };
 
 #endif // !WSOCKET_HH

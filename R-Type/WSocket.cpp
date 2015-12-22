@@ -49,14 +49,14 @@ void	WSocket::accept_()
 	}
 }
 
-void						WSocket::setClientInfo(struct clientList info)
+void						WSocket::setClientInfo(clientList info)
 {
 	this->clientInfo = info;
 }
 
-void						WSocket::setVectorList(struct clientList client)
+void						WSocket::setVectorList(clientList client)
 {
-	this->clientList.push_back(client);
+	this->clientVector.push_back(client);
 }
 
 clientList					WSocket::getClientInfo() const
@@ -66,11 +66,30 @@ clientList					WSocket::getClientInfo() const
 
 std::vector<clientList>		WSocket::getCList() const
 {
-	return	clientList;
+	return	clientVector;
+}
+
+int Split(std::vector<std::string>& vecteur, std::string chaine, char separateur)
+{
+	vecteur.clear();
+
+	std::string::size_type stTemp = chaine.find(separateur);
+
+	while (stTemp != std::string::npos)
+	{
+		vecteur.push_back(chaine.substr(0, stTemp));
+		chaine = chaine.substr(stTemp + 1);
+		stTemp = chaine.find(separateur);
+	}
+	vecteur.push_back(chaine);
+	return vecteur.size();
 }
 
 void	WSocket::selectTCP()
 {
+	std::vector<std::string>	commande;
+
+
 	clientInfo.id = 0;
 	clientInfo.clientSocket = INVALID_SOCKET;
 	clientInfo.login = "";
@@ -80,7 +99,7 @@ void	WSocket::selectTCP()
 
 	FD_SET(_socket, &rdfd);
 	//FD_SET(, &wrfd); boucle client
-	for (std::vector<struct clientList>::iterator it = clientList.begin(); it != clientList.end(); ++it)
+	for (std::vector<clientList>::iterator it = clientVector.begin(); it != clientVector.end(); ++it)
 	{
 		FD_SET(it->clientSocket, &wrfd);
 		FD_SET(it->clientSocket, &rdfd);
@@ -97,21 +116,42 @@ void	WSocket::selectTCP()
 		std::cout << "ACCEPTED" << std::endl;
 		clientInfo.id = (getCList().size() + 1);
 		clientInfo.clientSocket = _tcpClientSocket;
-		clientInfo.login = "";
+		clientInfo.login = "toto";
 
 		std::cout << getCList().size() << std::endl;
 		setClientInfo(clientInfo);
 		setVectorList(clientInfo);
 	}
-	for (std::vector<struct clientList>::iterator it = clientList.begin(); it != clientList.end(); ++it)
+	for (std::vector<clientList>::iterator it = clientVector.begin(); it != clientVector.end(); ++it)
 	{
 		memset(data, 0, 4);
 		if (FD_ISSET(it->clientSocket, &rdfd))
 		{
 			recv_len = recv(it->clientSocket, data, 512, 0);
 			data[recv_len - 1] = '\0';
-			send(it->clientSocket, "ok", 2, 0);
 			std::cout << data << std::endl;
+			Split(commande, data, ';');
+
+			if (commande[0] == "1")
+			tcpPRTL.greeting(it->clientSocket);
+						
+			if (commande[0] == "2")
+			{
+				if (commande[1] == "")
+					send(it->clientSocket, "ko", 2, 0);
+				else
+				{
+					tcpPRTL.recvLogin(it->clientSocket);
+					clientVector[it->id - 1].login = commande[1];
+					std::cout << "login = " << clientVector[it->id - 1].login << std::endl;
+				}
+				//clientVector.at(it->id).login = commande[2];
+				//std::cout << "login = " << commande[0] << std::endl;
+			}
+		
+
+			//std::cout << "login" << commande[2] << std::endl;
+			//send(it->clientSocket, "ok", 2, 0);			
 			//std::cout << "read" << std::endl;
 		}
 		if (FD_ISSET(it->clientSocket, &wrfd))
@@ -120,6 +160,7 @@ void	WSocket::selectTCP()
 			//std::cout << "write" << std::endl;
 		}
 	}
+	//commande.clear();
 }
 
 /*void	WSocket::setNonBlockingMode()
