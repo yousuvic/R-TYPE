@@ -89,7 +89,6 @@ void	WSocket::selectTCP()
 {
 	std::vector<std::string>	commande;
 
-
 	clientInfo.id = 0;
 	clientInfo.clientSocket = INVALID_SOCKET;
 	clientInfo.login = "";
@@ -116,7 +115,9 @@ void	WSocket::selectTCP()
 		std::cout << "ACCEPTED" << std::endl;
 		clientInfo.id = (getCList().size() + 1);
 		clientInfo.clientSocket = _tcpClientSocket;
-		clientInfo.login = "toto";
+		clientInfo.login = "";		
+		clientInfo.roomName = "";
+		clientInfo.isHost = false;
 
 		std::cout << getCList().size() << std::endl;
 		setClientInfo(clientInfo);
@@ -148,11 +149,44 @@ void	WSocket::selectTCP()
 				//clientVector.at(it->id).login = commande[2];
 				//std::cout << "login = " << commande[0] << std::endl;
 			}
-		
 
-			//std::cout << "login" << commande[2] << std::endl;
-			//send(it->clientSocket, "ok", 2, 0);			
-			//std::cout << "read" << std::endl;
+			if (commande[0] == "3")
+			{
+				bool isSame = false;
+
+				if (commande[1] == "")
+					send(it->clientSocket, "ko", 2, 0);		
+				if (commande[1].length() > 0)
+				{
+					std::cout << "length = " << commande[1].length() << std::endl;
+					std::cout << "size = " << room.size() << std::endl;
+					if (room.size() > 0)
+					{
+						for (int pos = 0; pos < room.size(); ++pos)
+						{
+							if (room[pos] == commande[1])
+							{
+								send(it->clientSocket, "ko", 2, 0);
+								isSame = true;
+							}
+						}
+					}					
+					if (isSame == false)
+					{
+						room.push_back(commande[1]);
+						tcpPRTL.createRoom(it->clientSocket);
+						clientVector[it->id - 1].roomName = commande[1];
+						clientVector[it->id - 1].isHost = true;
+						std::cout << "Room = " << clientVector[it->id - 1].roomName << std::endl;
+					}
+				}
+			}
+
+			if (commande[0] == "4")
+			{
+
+			}
+
 		}
 		if (FD_ISSET(it->clientSocket, &wrfd))
 		{

@@ -13,6 +13,7 @@ public:
 
 	void	greeting(int socket);
 	void	recvLogin(int socket);
+	void	createRoom(int socket);
 
 private:
 

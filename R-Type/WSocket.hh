@@ -12,13 +12,15 @@
 
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 
-#define PORT 4242
+#define PORT 4243
 
 typedef	struct	s_clientList
 {
 	int			id;
 	SOCKET		clientSocket;
 	std::string	login;
+	std::string	roomName;
+	bool		isHost;
 }				clientList;
 
 class WSocket	:	public	ISocket
@@ -72,6 +74,7 @@ private:
 
 	/*------------- PROTOCOL -------------*/
 	Protocol					tcpPRTL;
+	std::vector<std::string>	room;
 };
 
 #endif // !WSOCKET_HH

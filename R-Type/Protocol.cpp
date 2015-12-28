@@ -24,6 +24,18 @@ void	Protocol::recvLogin(int socket)
 	}
 }
 
+void	Protocol::createRoom(int socket)
+{
+	try
+	{
+		send(socket, "ok", 2, 0);
+	}
+	catch (const std::exception & e)
+	{
+		std::cerr << e.what();
+	}
+}
+
 Protocol::Protocol()
 {
 
