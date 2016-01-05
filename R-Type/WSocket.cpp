@@ -162,7 +162,7 @@ void	WSocket::selectTCP()
 					std::cout << "size = " << room.size() << std::endl;
 					if (room.size() > 0)
 					{
-						for (int pos = 0; pos < room.size(); ++pos)
+						for (unsigned int pos = 0; pos < room.size(); ++pos)
 						{
 							if (room[pos] == commande[1])
 							{

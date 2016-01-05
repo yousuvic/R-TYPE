@@ -18,7 +18,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -73,6 +73,7 @@
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="Protocol.cpp" />
     <ClCompile Include="WExchange.cpp" />
+    <ClCompile Include="WinThread.cpp" />
     <ClCompile Include="WSocket.cpp" />
     <ClCompile Include="WThread.cpp" />
   </ItemGroup>
@@ -83,6 +84,7 @@
     <ClInclude Include="IThread.hh" />
     <ClInclude Include="Packet.hh" />
     <ClInclude Include="Protocol.hh" />
+    <ClInclude Include="WinThread.hh" />
     <ClInclude Include="WThread.hh" />
     <ClInclude Include="WExchange.hh" />
     <ClInclude Include="WSocket.hh" />

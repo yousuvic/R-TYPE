@@ -69,6 +69,9 @@
     <ClCompile Include="Protocol.cpp">
       <Filter>Fichiers sources\Protocol</Filter>
     </ClCompile>
+    <ClCompile Include="WinThread.cpp">
+      <Filter>Fichiers sources\Thread</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.hh">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="Protocol.hh">
       <Filter>Fichiers d%27en-tête\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="WinThread.hh">
+      <Filter>Fichiers d%27en-tête\Thread</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

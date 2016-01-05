@@ -4,7 +4,7 @@
 #include "WExchange.hh"
 #include "Protocol.hh"
 #include "WSocket.hh"
-#include "WThread.hh"
+#include "WinThread.hh"
 
 class Controller
 {
@@ -16,7 +16,7 @@ public:
 
 private:
 	WSocket		*tcpSocket;
-	WThread		*threadTCP;
+	WinThread		*threadTCP;
 
 };
 

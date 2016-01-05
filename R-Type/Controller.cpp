@@ -76,7 +76,7 @@ std::vector<Controller::clientList> Controller::getCList() const
 
 Controller::Controller()
 {	
-	this->threadTCP = new WThread();
+	this->threadTCP = new WinThread();
 	//this->clientInfo = new clientList;
 
 	/*clientInfo->id = 0;

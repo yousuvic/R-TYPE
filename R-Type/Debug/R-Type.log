@@ -1,1 +1,20 @@
-﻿
+﻿La génération a démarré 04/01/2016 10:22:15.
+     1>Projet "C:\Users\yousuvic\Documents\GitHub\R-TYPE\R-Type\R-Type.vcxproj" sur le nœud 2 (Build cible(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\yousuvic\Documents\GitHub\R-TYPE\\Pthread-include\\" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt WinThread.cpp
+         WinThread.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yousuvic\Documents\GitHub\R-TYPE\\bin\R-Type.exe" /INCREMENTAL /NOLOGO "C:\Users\yousuvic\Documents\GitHub\R-TYPE\\Ptherad-lib\pthreadVC.lib" "C:\Users\yousuvic\Documents\GitHub\R-TYPE\\Ptherad-lib\pthreadVCE.lib" "C:\Users\yousuvic\Documents\GitHub\R-TYPE\\Ptherad-lib\pthreadVSE.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yousuvic\Documents\GitHub\R-TYPE\\bin\R-Type.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yousuvic\Documents\GitHub\R-TYPE\\bin\R-Type.lib" /MACHINE:X86 Debug\Controller.obj
+         Debug\Main.obj
+         Debug\Packet.obj
+         Debug\Protocol.obj
+         Debug\WExchange.obj
+         Debug\WinThread.obj
+         Debug\WSocket.obj
+         Debug\WThread.obj
+         R-Type.vcxproj -> C:\Users\yousuvic\Documents\GitHub\R-TYPE\\bin\R-Type.exe
+     1>Génération du projet "C:\Users\yousuvic\Documents\GitHub\R-TYPE\R-Type\R-Type.vcxproj" terminée (Build cible(s)).
+
+La génération a réussi.
+
+Temps écoulé 00:00:01.40
